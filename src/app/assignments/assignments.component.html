@@ -1,0 +1,31 @@
+<app-add-assignment *ngIf="formVisible"
+                    (nouvelAssignment)="onNouvelAssignment($event)"
+>
+</app-add-assignment>
+
+
+<main class="container" *ngIf="!formVisible">
+  <button mat-flat-button
+          class="ajouterBtn"
+          color="accent"
+          (click)="onAddAssignmentBtnClick()"
+  >
+    Ajouter un devoir
+  </button>
+
+  <mat-list *ngFor="let assignment of assignments">
+    <h3 mat-subheader>Date de rendu {{assignment.dateDeRendu | date}}</h3>
+    <mat-list-item (click)="assignmentClique(assignment)">
+      <p appRendu *ngIf="assignment.rendu; else nonsoumis">
+        {{assignment.nom}} rendu.
+      </p>
+      <mat-divider></mat-divider>
+      <ng-template #nonsoumis>
+        <p>Devoir intitulé {{assignment.nom}} non rendu.</p>
+      </ng-template>
+    </mat-list-item>
+  </mat-list>
+  <app-assignment-detail [assignmentTransmis]="assignmentSelectionne"
+  >
+</app-assignment-detail>
+</main>
