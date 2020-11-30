@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoggingService {
-
-  constructor() { }
+  constructor() {}
 
   log(assignmentName, action) {
-    console.log("Log: l'assignment " +
-                assignmentName + " a été " + action);
+    console.log("Log: l'assignment " + assignmentName + ' a été ' + action);
   }
 }
